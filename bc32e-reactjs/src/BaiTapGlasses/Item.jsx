@@ -39,17 +39,7 @@ export default class Item extends Component {
                 src="./glassesImage/model.jpg"
                 alt=""
               />
-              <img
-                className="position-absolute"
-                src={this.state.glassesDefault.url}
-                alt=""
-                style={{
-                  opacity: "0.7",
-                  top: "62px",
-                  left: "48px",
-                  width: "104px",
-                }}
-              />
+
               <div
                 className="description position-absolute"
                 style={{
@@ -58,6 +48,17 @@ export default class Item extends Component {
                   height: "80px",
                 }}
               >
+                <img
+                  className="position-absolute"
+                  src={this.state.glassesDefault.url}
+                  alt=""
+                  style={{
+                    opacity: "0.7",
+                    top: "-108px",
+                    left: "48px",
+                    width: "104px",
+                  }}
+                />
                 <span className="text-primary font-weight-bold">
                   {this.state.glassesDefault.name}
                 </span>
@@ -80,20 +81,6 @@ export default class Item extends Component {
               />
 
               {this.state.isShow && (
-                <img
-                  className="position-absolute"
-                  src={this.state.glassesChange.url}
-                  alt=""
-                  style={{
-                    opacity: "0.7",
-                    top: "62px",
-                    left: "48px",
-                    width: "104px",
-                  }}
-                />
-              )}
-
-              {this.state.isShow && (
                 <div
                   className="description position-absolute"
                   style={{
@@ -102,6 +89,17 @@ export default class Item extends Component {
                     height: "80px",
                   }}
                 >
+                  <img
+                    className="position-absolute"
+                    src={this.state.glassesChange.url}
+                    alt=""
+                    style={{
+                      opacity: "0.7",
+                      top: "-108px",
+                      left: "48px",
+                      width: "104px",
+                    }}
+                  />
                   <span className="text-primary font-weight-bold">
                     {this.state.glassesChange.name}
                   </span>
@@ -123,7 +121,14 @@ export default class Item extends Component {
               {data.map((value) => {
                 return (
                   <div className="col-2" key={value.id}>
-                    <button className="mt-4">
+                    <button
+                      className="mt-4"
+                      style={{
+                        border: "1px solid black",
+                        backgroundColor: "#f8f9fa",
+                        height: "54px",
+                      }}
+                    >
                       <img
                         src={value.url}
                         alt=""
