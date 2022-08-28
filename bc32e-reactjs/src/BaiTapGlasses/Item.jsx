@@ -5,10 +5,10 @@ export default class Item extends Component {
   state = {
     isShow: false,
     glassesDefault: {
-      id: 8,
-      price: 100,
-      name: "FENDI F8500",
-      url: "./glassesImage/v8.png",
+      id: 7,
+      price: 80,
+      name: "FENDI F8750",
+      url: "./glassesImage/v7.png",
       desc: "Light pink square lenses define these sunglasses, ending with amother of pearl effect tip. ",
     },
     glassesChange: {
@@ -31,7 +31,7 @@ export default class Item extends Component {
             style={{ height: "200px" }}
           >
             <div
-              className="model-left"
+              className="model-left position-relative"
               style={{ width: "200px", height: "250px" }}
             >
               <img
@@ -39,11 +39,22 @@ export default class Item extends Component {
                 src="./glassesImage/model.jpg"
                 alt=""
               />
+              <img
+                className="position-absolute"
+                src={this.state.glassesDefault.url}
+                alt=""
+                style={{
+                  opacity: "0.7",
+                  top: "62px",
+                  left: "48px",
+                  width: "104px",
+                }}
+              />
               <div
-                className="description position-relative"
+                className="description position-absolute"
                 style={{
                   backgroundColor: "rgba(243,83,7,0.46",
-                  marginTop: "-80px",
+                  bottom: "0",
                   height: "80px",
                 }}
               >
@@ -59,7 +70,7 @@ export default class Item extends Component {
               </div>
             </div>
             <div
-              className="model-right"
+              className="model-right position-relative"
               style={{ width: "200px", height: "250px" }}
             >
               <img
@@ -67,12 +78,27 @@ export default class Item extends Component {
                 src="./glassesImage/model.jpg"
                 alt=""
               />
+
+              {this.state.isShow && (
+                <img
+                  className="position-absolute"
+                  src={this.state.glassesChange.url}
+                  alt=""
+                  style={{
+                    opacity: "0.7",
+                    top: "62px",
+                    left: "48px",
+                    width: "104px",
+                  }}
+                />
+              )}
+
               {this.state.isShow && (
                 <div
-                  className="description position-relative"
+                  className="description position-absolute"
                   style={{
                     backgroundColor: "rgba(243,83,7,0.46",
-                    marginTop: "-80px",
+                    bottom: "0",
                     height: "80px",
                   }}
                 >
@@ -90,24 +116,26 @@ export default class Item extends Component {
             </div>
           </div>
           <div
-            className="glasses bg-light"
-            style={{ height: "200px", marginTop: "80px" }}
+            className="glasses bg-light px-3"
+            style={{ height: "206px", marginTop: "80px" }}
           >
             <div className="row p-3">
               {data.map((value) => {
                 return (
                   <div className="col-2" key={value.id}>
-                    <img
-                      src={value.url}
-                      alt=""
-                      className="img-fluid mt-4"
-                      onClick={() => {
-                        this.setState({
-                          glassesChange: value,
-                          isShow: true,
-                        });
-                      }}
-                    />
+                    <button className="mt-4">
+                      <img
+                        src={value.url}
+                        alt=""
+                        className="img-fluid"
+                        onClick={() => {
+                          this.setState({
+                            glassesChange: value,
+                            isShow: true,
+                          });
+                        }}
+                      />
+                    </button>
                   </div>
                 );
               })}
